@@ -18,6 +18,11 @@ Please note that this is an extract, as I removed most chapters to speed up comp
 Hopefully the code is commented enough that you can make sense of it, but note the basic structure: there's a master script, called <code>THESIS.tex</code>, where all the document variables declarations happen, and inside this document I call the separate scripts for each chapter (e.g. <code>Ch2_Apomixis.tex</code>). This way you can comment out (shortcut Ctrl+/ or Cmd+/) the lines chapters that you don't need and only compile what you are working on, significantly improving compilation time. 
 Should anything go wrong, you can try and delete the cached files: on the right panel of Overleaf, select the 'Logs and output files' icon, scroll all the way down, and there will be a dustbin icon that allows you to delete cached files. Doing this before recompiling can solve some errors, especially if you move sections around and references get messed up. 
 
+## Reference managers and the bibliography
+The way LaTeX manages references is through BiBTeX, technically a separate program but they're almost always used in tandem. BiBTeX understands the <code>.bib</code> format, that uses a number of fields to define a reference. You can read more about that on Overleaf's [help pages](https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex). 
+
+You will most likely already been using a reference manager to keep track of all your bibliograhy. To my knowedge, the most popular are Endnote, Mendeley and Zotero. I used Mendeley, and the procedure below refers to it. You will have to figure a way to have your reference manager of choice export a <code>.bib</code> file with all your references (it does not matter whether you use the in your thesis or not), and upload that to Overleaf. Pay close attention to the first line, immediately following the publication type declaration (e.g. <code>@article{Abbott2003</code>), as these are the keywords that LaTeX will use in the text. Overleaf offers an autocompletion feature for references, that will present you with a choice of matching keywords when you start typing in a reference: be mindful of this, especially if you have multiple papers with the same author(s) and the same year! 
+
 ## Pipeline for transferring from MS Word to Overleaf: 
 1. Download and install Mendeley's MS Word plugin. 
 2. From the MS Word Mendeley plugin, in the 'References' tab, open the 'Style' the drop-down menu and select 'More Styles'. In the new window that opened, go in the 'Get more styles' tab, and paste the link http://csl.mendeley.com/styles/487896501/bibtex into it, then click 'Download'. 
@@ -27,11 +32,6 @@ Should anything go wrong, you can try and delete the cached files: on the right 
 6. Open <code>OUTPUT.tex</code> in text editor and copy-paste (piecemeal suggested, easier to debug). Will need extensive check and manual adjustments. 
 
 *CAUTION*: some citation keys *will be* wrong! Need to manually check consistency using the original Word document as reference, particularly for multiple papers per author/year. 
-
-## Reference managers and the bibliography
-The way LaTeX manages references is through BiBTeX, technically a separate program but they're almost always used in tandem. BiBTeX understands the <code>.bib</code> format, that uses a number of fields to define a reference. You can read more about that on Overleaf's [help pages](https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex). 
-
-You will most likely already been using a reference manager to keep track of all your bibliograhy. To my knowedge, the most popular are Endnote, Mendeley and Zotero. I used Mendeley, and the procedure below refers to it. You will have to figure a way to have your reference manager of choice export a <code>.bib</code> file with all your references (it does not matter whether you use the in your thesis or not), and upload that to Overleaf. Pay close attention to the first line, immediately following the publication type declaration (e.g. <code>@article{Abbott2003</code>), as these are the keywords that LaTeX will use in the text. Overleaf offers an autocompletion feature for references, that will present you with a choice of matching keywords when you start typing in a reference: be mindful of this, especially if you have multiple papers with the same author(s) and the same year! 
 
 ### Using Mendeley to format the references and bibliography
 
