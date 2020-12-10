@@ -16,10 +16,18 @@ You can find a template to my thesis's Overleaf project here: https://www.overle
 Hopefully the code is commented enough that you can make sense of it, but note the basic structure: there's a master script, called <code>THESIS.tex</code>, where all the document variables declarations happen, and inside this document I call the separate scripts for each chapter (e.g. <code>Ch2_Apomixis.tex</code>). This way you can comment out (shortcut Ctrl+/ or Cmd+/) the chapters that you don't need and only compile what you are working on, significantly improving compilation time. 
 Should anything go wrong, you can try and delete the cached files: on the right panel of Overleaf, select the 'Logs and output files' icon, scroll all the way down, and there will be a dustbin icon that allows you to delete cached files. Doing this before recompiling can solve some errors, especially if you move sections around and references get messed up. 
 
---- 
+## Pipeline for transferring from MS Word to Overleaf: 
+1. Download and install Mendeley's MS Word plugin. 
+2. From the MS Word Mendeley plugin, in the 'References' tab, open the 'Style' the drop-down menu and select 'More Styles'. In the new window that opened, go in the 'Get more styles' tab, and paste the link http://csl.mendeley.com/styles/487896501/bibtex into it, then click 'Download'. 
+3. Back to MS Word, change citation style from Mendeley's Word plugin ('References' tab), select style "BiBTeX in-line citations".
+4. Change italics with TeX-friendly wrappers, use procedure from https://tex.stackexchange.com/a/140202: find-and-replace, with empty string in 'Find' with font: Italic; replace with <code>\emph{^&}</code>, font: Regular; click 'Replace all'. 
+5. convert using **Pandoc** command prompt utility (get Pandoc [here](https://pandoc.org/)). Open a terminal in the Word document's directory and use command: <code>pandoc FILENAME.docx -f docx -t latex -s -o OUTPUT.tex</code>
+6. Open <code>OUTPUT.tex</code> in text editor and copy-paste bits of code. Will need extensive check and manual adjustment. 
+
+*CAUTION*: some citation keys *will be* wrong! Need to manually check consistency using the original Word document as reference, particularly for multiple papers for author/year. 
 
 ## Reference managers and the bibliography
-The way LaTeX manages references is through BiBTeX, technically a separate program but they're almost always used in tandem. BiBTeX understands the <code>.bib</code> format, that uses a number of fields to define a reference. You can read more about that on Overlaf's [help pages](https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex). 
+The way LaTeX manages references is through BiBTeX, technically a separate program but they're almost always used in tandem. BiBTeX understands the <code>.bib</code> format, that uses a number of fields to define a reference. You can read more about that on Overleaf's [help pages](https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex). 
 
 You will most likely already been using a reference manager to keep track of all your bibliograhy. To my knowedge, the most popular are Endnote, Mendeley and Zotero. I used Mendeley, and the procedure below refers to it. You will have to figure a way to have your reference manager of choice export a <code>.bib</code> file with all your references (it does not matter whether you use the in your thesis or not), and upload that to Overleaf. Pay close attention to the first line, immediately following the publication type declaration (e.g. <code>@article{Abbott2003</code>), as these are the keywords that LaTeX will use in the text. Overleaf offers an autocompletion feature for references, that will present you with a choice of matching keywords when you start typing in a reference: be mindful of this, especially if you have multiple papers with the same author(s) and the same year! 
 
@@ -31,7 +39,7 @@ You will most likely already been using a reference manager to keep track of all
 3. Check Citation Key
 	- If it's incorrect, note down the incorrect key on the left-hand side of the table below, and the new, correct one on the right hand side
 	- This will need to be found-replaced in the LaTeX document (they are inside <code>\citep{^&}</code>) 
-4. CAUTION: do not modify other fields before changing Citation Key, otherwise it won't register the changes! 
+4. *CAUTION*: do not modify other fields before changing Citation Key, otherwise it won't register the changes! 
 5. Check for correct formatting
 	- TITLE: Species are in italics (use HTML notation, <code>\<i\>text\<\/\i></code>), spaces before/after punctuation are correct, capitalization is correct, accents are correct
 	- AUTHORS 
@@ -52,15 +60,3 @@ You will most likely already been using a reference manager to keep track of all
 9. Find and replace <code>"Ľ"</code> to <code>"\v{L}"</code>. 
 10. Save file and load to Overleaf
 11. Make sure to reference the correct .bib file in the TeX
-
---- 
-
-## Pipeline for transferring from MS Word to Overleaf: 
-1. Download and install Mendeley's MS Word plugin. 
-2. From the MS Word Mendeley plugin, in the References tab, open the Style the drop-down menu and select More Styles. In the new window hat opened, go in the Get more styles tab, and paste the link http://csl.mendeley.com/styles/487896501/bibtex into it, then click Download. 
-3. Back to MS Word, change citation style from Mendeley's Word plugin (References tab), select style "BiBTeX in-line citations".
-4. Change italics with TeX-friendly wrappers, use procedure from https://tex.stackexchange.com/a/140202: find-and-replace, with empty string in 'Find' with font: Italic; replace with <code>\emph{^&}</code>, font: Regular; click 'Replace all'. 
-5. convert using Pandoc command prompt utility (get Pandoc [here](https://pandoc.org/)). Open a terminal in the Word document's directory and use command: <code>pandoc FILENAME.docx -f docx -t latex -s -o OUTPUT.tex</code>
-6. Open OUTPUT.tex in text editor and copy-paste bits of code. Will need extensive check and manual adjustment. 
-
-***CAUTION***: some citation keys **will be** wrong! Need to manually check consistency using the original Word document as reference, particularly for multiple papers for author/year. 
