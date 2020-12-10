@@ -13,7 +13,8 @@ Overleaf and LaTeX produce PDF files, which are non-editable and are a pain to c
 
 You can find a template to my thesis's Overleaf project here: https://www.overleaf.com/read/vykxxgcxmvmv 
 
-Hopefully the code is commented enough that you can make sense of it, but note the basic structure: there's a master script, called <code>THESIS.tex</code>, where all the document variables declarations happen, and inside this document I call the separate scripts for each chapter (e.g. <code>Ch2_Apomixis.tex</code>). This way you can comment out (shortcut Ctrl+/ or Cmd+/) the chapters that you don't need and only compile what you are working on, significantly improving compilation time. Should anything go wrong, you can try and delete the cached files: on the right panel of Oerleaf, select the "Logs and output files" icon, scrol all the way down, and there will be a dustbin icon that allows you to delete cahced files. Doing this before recompiling can solve some compilation errors, especially if you move sections around and references get messed up. 
+Hopefully the code is commented enough that you can make sense of it, but note the basic structure: there's a master script, called <code>THESIS.tex</code>, where all the document variables declarations happen, and inside this document I call the separate scripts for each chapter (e.g. <code>Ch2_Apomixis.tex</code>). This way you can comment out (shortcut Ctrl+/ or Cmd+/) the chapters that you don't need and only compile what you are working on, significantly improving compilation time. 
+Should anything go wrong, you can try and delete the cached files: on the right panel of Overleaf, select the 'Logs and output files' icon, scroll all the way down, and there will be a dustbin icon that allows you to delete cached files. Doing this before recompiling can solve some errors, especially if you move sections around and references get messed up. 
 
 --- 
 
