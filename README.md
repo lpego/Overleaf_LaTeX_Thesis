@@ -22,42 +22,44 @@ The way LaTeX manages references is through BiBTeX, technically a separate progr
 
 You will most likely already been using a reference manager to keep track of all your bibliograhy. To my knowedge, the most popular are Endnote, Mendeley and Zotero. I used Mendeley, and the procedure below refers to it. You will have to figure a way to have your reference manager of choice export a <code>.bib</code> file with all your references (it does not matter whether you use the in your thesis or not), and upload that to Overleaf. Pay close attention to the first line, immediately following the publication type declaration (e.g. <code>@article{Abbott2003</code>), as these are the keywords that LaTeX will use in the text. Overleaf offers an autocompletion feature for references, that will present you with a choice of matching keywords when you start typing in a reference: be mindful of this, especially if you have multiple papers with the same author(s) and the same year! 
 
-### Pipeline for export from Mendeley to BiBTeX
-1. For formatting of references in Mendeley see other note Mendeley bibliography formatting pipeline 
-2. For export, make sure to be in 'All Documents', ordered by 'Author, ascending' 
-3. Select all documents (select one, then Ctrl+A)
-4. File > Export... > .bib
-5. Navigate to where the exported file is
-6. Find-replace all <i> to \emph{ and all </i> to }
-7. Find and replace all " & " to " \& ".
-8. Find and replace "a̧" to "\c{a}".  
-9. Find and replace "Ľ" to "\v{L}". 
-10. Save file and load to Overleaf
-11. Make sure to reference the correct .bib file in the TeX
+### Using Mendeley to format the references and bibliography
 
-### Mendeley bibliography formatting pipeline
+#### Mendeley bibliography formatting pipeline
 1. Check that you are in 'All documents' 
 2. Check that they are ordered by 'Author, ascending' 
 3. Check Citation Key
 	- If it's incorrect, note down the incorrect key on the left-hand side of the table below, and the new, correct one on the right hand side
-	- This will need to be found-replaced in the LaTeX document (they are inside \citep{^&} 
-4. CAUTION: do not modify other fields before changing Citation Key, otherwise it won't register he changes! 
+	- This will need to be found-replaced in the LaTeX document (they are inside <code>\citep{^&}</code>) 
+4. CAUTION: do not modify other fields before changing Citation Key, otherwise it won't register the changes! 
 5. Check for correct formatting
-	- TITLE: Species are in italics (use HTML notation, <i>text</i>), spaces before/after punctuation are correct, capitalization is correct, accents are correct
-	-  AUTHORS 
+	- TITLE: Species are in italics (use HTML notation, <code>\<i\>text\<\/\i></code>), spaces before/after punctuation are correct, capitalization is correct, accents are correct
+	- AUTHORS 
 	- JOURNAL NAME: check for misspelling and use suggested field as necessary
 	- YEAR: check in the PDF that the year is correct
 6. If the 'Type' is not 'Journal article', check that it is appropriate
 7. Check if there are multiple files attached and eventually remove duplicates
+
+#### Pipeline for export from Mendeley to BiBTeX
+1. For formatting of references in Mendeley see other note Mendeley bibliography formatting pipeline 
+2. For export, make sure to be in 'All Documents', ordered by 'Author, ascending' 
+3. Select all documents (select one, then Ctrl+A or Cmd+A)
+4. File > Export... > .bib
+5. Navigate to where the exported file is
+6. Find-replace all <code>\<i\></code> to <code>\\emph\{</code> and all <code>\<\/i\></code> to <code>\}</code>	
+7. Find and replace all <code>" & "</code> to <code>" \\& "</code>.
+8. Find and replace <code>"a̧"</code> to <code>"\c{a}</code>".  
+9. Find and replace <code>"Ľ"</code> to <code>"\v{L}"</code>. 
+10. Save file and load to Overleaf
+11. Make sure to reference the correct .bib file in the TeX
 
 --- 
 
 ## Pipeline for transferring from MS Word to Overleaf: 
 1. Download and install Mendeley's MS Word plugin. 
 2. From the MS Word Mendeley plugin, in the References tab, open the Style the drop-down menu and select More Styles. In the new window hat opened, go in the Get more styles tab, and paste the link http://csl.mendeley.com/styles/487896501/bibtex into it, then click Download. 
-2. Back to MS Word, change citation style from Mendeley's Word plugin (References tab), select style "BiBTeX in-line citations".
-2. Change italics with TeX-friendly wrappers, use procedure from https://tex.stackexchange.com/a/140202: find-and-replace, with empty string in 'Find' with font: Italic; replace with <code>\emph{^&}</code>, font: Regular; click 'Replace all'. 
-3. convert using Pandoc command prompt utility (get Pandoc [here](https://pandoc.org/)). Open a terminal in the Word document's directory and use command: <code>pandoc FILENAME.docx -f docx -t latex -s -o OUTPUT.tex</code>
-4. Open OUTPUT.tex in text editor and copy-paste bits of code. Will need extensive check and manual adjustment. 
+3. Back to MS Word, change citation style from Mendeley's Word plugin (References tab), select style "BiBTeX in-line citations".
+4. Change italics with TeX-friendly wrappers, use procedure from https://tex.stackexchange.com/a/140202: find-and-replace, with empty string in 'Find' with font: Italic; replace with <code>\emph{^&}</code>, font: Regular; click 'Replace all'. 
+5. convert using Pandoc command prompt utility (get Pandoc [here](https://pandoc.org/)). Open a terminal in the Word document's directory and use command: <code>pandoc FILENAME.docx -f docx -t latex -s -o OUTPUT.tex</code>
+6. Open OUTPUT.tex in text editor and copy-paste bits of code. Will need extensive check and manual adjustment. 
 
 ***CAUTION***: some citation keys **will be** wrong! Need to manually check consistency using the original Word document as reference, particularly for multiple papers for author/year. 
