@@ -12,6 +12,7 @@ Overleaf and LaTeX produce PDF files, which are non-editable and are a pain to c
 --- 
 
 You can find a template to my thesis's Overleaf project here: https://www.overleaf.com/read/vykxxgcxmvmv 
+
 Please note that this is an extract, as I removed most chapters to speed up compiling and keeping it relatively simple. There are many warnings (I get 113), but these are about references to missing files/figures (denoted by **??** in the PDF) that I removed to make the template (i.e. I couldn't be bothered to remove them from the main text). In the template I've left the whole of Chapter 2 with its appendices, so you can get a close idea of what you can expect as a finished product, as well as some useful tricks (e.g. multi-page tables with repeated headers, forcing gifures to float where you want them, etc). 
 
 Hopefully the code is commented enough that you can make sense of it, but note the basic structure: there's a master script, called <code>THESIS.tex</code>, where all the document variables declarations happen, and inside this document I call the separate scripts for each chapter (e.g. <code>Ch2_Apomixis.tex</code>). This way you can comment out (shortcut Ctrl+/ or Cmd+/) the lines chapters that you don't need and only compile what you are working on, significantly improving compilation time. 
